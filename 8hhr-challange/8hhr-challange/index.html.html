@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        form{display: flex; flex-direction: column; justify-content: center; 
+        height: 300px; width: 300px; margin: auto;}
+        h4,h3{ font-size: 14PX; font-family:sans-serif;}
+        label{padding-bottom: -25px;}
+        input{ border: none; border-bottom: 2px solid grey; outline: none;}
+
+    </style>
+    <title>Stock Login</title>
+</head>
+<body>
+<form id="login">
+    <h3>Hello welcome to the stock managment app,</h3>
+    <h4>please signin</h4>
+    <label>Username</label>
+    <br>
+    <input id="userName">
+    <br>
+    <label>Password</label>
+    <br>
+    <input id="password">
+    <h4>Forgot your Password?</h4>
+    <button type="submit">Login</button>
+</form>
+</body>
+<script>
+    document.getElementById("login").addEventListener("submit",function(e)
+    {
+        e.preventDefault();
+     let userName = document.getElementById("userName").value;
+     let password = document.getElementById("password").value;
+     if(userName==="077777" && password==="nkwan"){
+        alert("login successfull");
+        window.location.href="stock.html";
+     }else{
+       alert("userName or password is incorrect");
+     }});
+
+</script>
+</html>

@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body{display: flex; flex-direction: column; height: 200px;
+             width: 220px; margin: auto; background-color:#ededf1;}
+             input{margin-top: -15px; border-radius:2px;}
+             label{margin-top: -5px; font-size: 20px; font-style: normal; font-family: 'Times New Roman', Times, serif;}
+             select{margin-top: -15px; border-radius: 3px;}
+             button{margin-bottom: 20px;}
+    </style>
+    <title>Shop Stock Tracker</title>
+</head>
+<body>
+    <h2>Shop Stock Tracker</h2>
+    <label>Product Name</label>
+    <br>
+    <select id="name" onchange="productData(), changeProduct()" >
+        <option>select</option>
+        <option>pop10c</option>
+        <option>pop10</option>
+        <option>POP20(64)</option>
+        <option>POP20(128)</option>
+        <option>SPARK40(128)</option>
+        <option>SPARK40(256)</option>
+        <option>SPARK40PRO</option>
+        <option>SPARK40PRO+</option>
+        <option>CAMON40</option>
+        <option>CAMON40PRO</option>
+        <option>CAMON50</option>
+        <option>CAMON50PRO</option>
+        <option>CAMON50 ULTRA</option>
+        <option>SMART10</option>
+        <option>SMART10+</option>
+        <option>HOT60I</option>
+        <option>HOT60PRO</option>
+        <option>HOT60PRO+</option>
+        <option>XPAD20</option>
+        <option>NOTE EDGE</option>
+        <option>NOTE50</option>
+        <option>NOTE50PRO+</option>
+        
+        
+    </select>
+    <br>
+    <label>Available</label>
+    <br>
+    <input placeholder="Balance" id="balance">
+    <br>
+    <label>Buying Price</label>
+    <br>
+    <input type="number" id="buying" placeholder="Price">
+    <br>
+
+    <label>Quantity Added</label>
+    <br>
+    <input type="number" id="added" placeholder="Quantity">
+    <br>
+    <label>Selling Price</label>
+    <br>
+    <input type="number" id="selling" placeholder="Price">
+
+    <br>
+    <label>Quantity Sold</label>
+    <br>
+    <input placeholder="Quantity" id="sold" type="number">
+    <br>
+    <label>Additional Expenses</label>
+    <br>
+    <input type="number" id="expenses" placeholder="Total Expenses">
+    <br>
+    <button type="button" onclick="calculate()">Enter</button>
+    <br>
+    <label>Product Remaining</label>
+    <br>
+    <input placeholder="Total Product" id="remaining" readonly>
+    <br>
+    <label>Amount Used</label>
+    <br>
+    <input type="number" placeholder="To Buy Stock" id="amountUsed">
+    <br>
+    <label>Amount Earned</label>
+    <br>
+    <input placeholder="Sales" id="amountEarned" readonly>
+    <br>
+    <button type="button" onclick="shopCalculation()">Submit</button>
+    <h3>Shop Value Calculation</h3>
+    <label>Stock Available</label>
+    <br>
+    <input placeholder="Total" type="number" id="total" value="0" readonly>
+    <br>
+    <label>Total Earned</label>
+    <br>
+    <input placeholder="Total" type="number" id="earned" readonly>
+    <br>
+    <label>Total Used</label>
+    <br>
+    <input placeholder="Total" type="number" id="used" readonly>
+    <br>
+    <label>Profit Made</label>
+    <br>
+    <input placeholder="Profit" type="number" id="profit" readonly>
+    <br>
+    <button>Submit</button>
+</body>
+<script> 
+    let productName=document.getElementById("name").value;
+    let buyingPrice = document.getElementById("buying").value;
+    let quantityAdded = document.getElementById("added").value;
+    let quantitySold = document.getElementById("sold").value;
+    let sellingPrice = document.getElementById("selling").value;
+    let available = document.getElementById("balance").value;
+    let amountUsed=document.getElementById("amountUsed");
+    let amountEarned = document.getElementById("amountEarned");
+    let productRemaining = document.getElementById("remaining");
+    let stockAvailable = document.getElementById("total");
+
+    function productData(){
+        //clearInputFields()
+    let productName = document.getElementById("name").value;
+    let available = document.getElementById("balance").value;
+    let buyingPrice = document.getElementById("buying");
+    let sellingPrice = document.getElementById("selling");
+    let profitMade = document.getElementById("profit");
+
+    if(productName==="pop10c"){
+        buyingPrice.value="292000";
+        sellingPrice.value="320000";
+    } 
+        if(productName==="pop10"){
+            buyingPrice.value="310000";
+            sellingPrice.value="360000";
+        }
+  
+         if(productName==="SPARK40(128)"){
+            buyingPrice.value="430000";
+            sellingPrice.value="470000";
+            
+        }
+        if(productName==="CAMON50"){
+            buyingPrice.value="955000";
+            sellingPrice.value="1060000";
+        }
+        if(productName==="CAMON50PRO"){
+            buyingPrice.value="1050000";
+            sellingPrice.value="1150000";
+        }
+        if(productName==="CAMON40"){
+            buyingPrice.value="775000";
+            sellingPrice.value="850000";
+        }
+        if(productName==="CAMON40PRO"){
+            buyingPrice.value="874000";
+            sellingPrice.value="950000";
+        }
+        if(productName==="POP20(64)"){
+            buyingPrice.value="341000";
+            sellingPrice.value="380000";
+        }
+            if(productName==="POP20(128)"){
+                buyingPrice.value="396000";
+                sellingPrice.value="440000";
+            }
+            if(productName==="SPARK40(256)"){
+                buyingPrice.value="514000";
+                sellingPrice.value="580000";
+            }
+            if(productName==="SPARK40PRO"){
+                buyingPrice.value="695000";
+                sellingPrice.value="780000";
+            }
+            if(productName==="SPARK40PRO+"){
+                buyingPrice.value="727000";
+                sellingPrice.value="830000";
+            }
+            if(productName==="CAMON50 ULTRA"){
+                buyingPrice.value="1650000";
+                sellingPrice.value="1890000";
+            }
+            if(productName==="SMART10"){
+                buyingPrice.value="3070000";
+                sellingPrice.value="340000";
+            }
+            if(productName==="SMART10+"){
+                buyingPrice.value="395000";
+                sellingPrice.value="440000";
+            }
+            if(productName==="HOT60I"){
+                buyingPrice.value="435000";
+                sellingPrice.value="480000";
+            }
+            if(productName==="HOT60PRO"){
+                buyingPrice.value="620000";
+                sellingPrice.value="690000";
+            }
+            if(productName==="HOT60PRO+"){
+                buyingPrice.value="755000";
+                sellingPrice.value="845000";
+            }
+            if(productName==="XPAD20"){
+                buyingPrice.value="503000";
+                sellingPrice.value="550000";
+            }
+            if(productName==="NOTE EDGE"){
+                buyingPrice.value="1050000";
+                sellingPrice.value="1150000";
+            }
+            if(productName==="NOTE50"){
+                buyingPrice.value="796000";
+                sellingPrice.value="900000";
+            }
+            if(productName==="NOTE50PRO+"){
+                buyingPrice.value="1420000";
+                sellingPrice.value="1650000";
+            }
+        
+
+}
+    let stock = {}; 
+    function clearInputFields(){
+        document.getElementById("balance").value=0;
+        document.getElementById("added").value=0;
+        document.getElementById("amountUsed").value=0;
+        document.getElementById("sold").value=0;
+    }
+   function calculate(){
+    
+ let productName=document.getElementById("name").value;
+    let buyingPrice = document.getElementById("buying").value;
+    let quantityAdded = document.getElementById("added").value;
+    let quantitySold = document.getElementById("sold").value;
+    let sellingPrice = document.getElementById("selling").value;
+    let available = document.getElementById("balance").value;
+    let amountUsed=document.getElementById("amountUsed");
+    let amountEarned = document.getElementById("amountEarned");
+    let productRemaining = document.getElementById("remaining");
+    let stockAvailable = document.getElementById("total");
+
+    let totalAmountEarned = Number(sellingPrice) * Number(quantitySold);
+    
+     let totalAmountUsed=Number(buyingPrice) * Number(quantityAdded);
+        amountEarned.value=totalAmountEarned;
+        amountUsed.value=totalAmountUsed;
+       // document.getElementById("used").value=totalAmountUsed;
+        const stockbalance = Number(available) + (Number(quantityAdded)
+         - Number(quantitySold));
+        if(stockbalance<0){
+    productRemaining.value=0;
+        }else{
+            productRemaining.value=stockbalance;
+        }
+
+    }
+
+        function changeProduct(){
+
+        document.getElementById("balance").value="";
+        document.getElementById("added").value="";
+        document.getElementById("sold").value="";
+        document.getElementById("remaining").value="";
+        document.getElementById("amountUsed").value="";
+        document.getElementById("amountEarned").value="";
+     
+}
+       //let stock ={};
+function shopCalculation(){
+    let productName = document.getElementById("name").value;
+    let productRemaining = document.getElementById("remaining");
+    let amountUsed = document.getElementById("amountUsed").value;
+    let amountEarned = document.getElementById("amountEarned").value;
+    let stockAvailable = document.getElementById("total");
+    let totalUsed = document.getElementById("used");
+    let profitMade = document.getElementById("profit");
+    let totalEarned = document.getElementById("earned");
+    let additionalExpenses = document.getElementById("expenses");
+      
+
+    let totalStock = 0;
+        stock[productName] = Number(productRemaining.value);
+
+        let total = 0;
+
+        for (let item in stock){
+            total += stock[item];
+        }
+        stockAvailable.value = total;
+
+        totalEarned.value = Number(amountEarned);
+        totalUsed.value = Number(amountUsed);
+        additionalExpenses.value = Number(expenses);
+ 
+    let totalProfit = Number(totalEarned.value) - Number(totalUsed.value) - 
+    Number(additionalExpenses.value);
+    alert(totalProfit);
+    profitMade.value=totalProfit;
+
+}
+
+</script>
+</html>
